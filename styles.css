@@ -1,0 +1,55 @@
+/* Estética cyberpunk: fondo oscuro, rejilla y neones */
+:root{
+	--bg-1:#071428; /* very dark blue */
+	--bg-2:#0f1020; /* deep purple */
+	--neon-cyan:#00f0ff;
+	--neon-magenta:#ff00d6;
+	--accent:#6effa3;
+}
+html,body{height:100%}
+body{
+	margin:0;padding:40px;font-family:Consolas, "Courier New", monospace;color:#e6f7ff;background:radial-gradient(1200px 600px at 10% 10%, rgba(0,240,255,0.06), transparent), radial-gradient(900px 400px at 90% 80%, rgba(255,0,214,0.04), transparent), linear-gradient(180deg,var(--bg-1),var(--bg-2));
+	overflow-x:hidden;
+}
+.background-grid{position:fixed;inset:0;pointer-events:none;opacity:0.12;background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.04) 0 1px, transparent 1px 40px), repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 40px);mix-blend-mode:screen}
+.scanlines{position:fixed;inset:0;pointer-events:none;background-image:repeating-linear-gradient(180deg, rgba(0,0,0,0.03) 0 2px, transparent 2px 6px);mix-blend-mode:multiply;opacity:0.25}
+.container{position:relative;z-index:2;max-width:720px;margin:56px auto;padding:28px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 8px 40px rgba(0,0,0,0.7);border:1px solid rgba(255,255,255,0.04);text-align:center;backdrop-filter:blur(6px)}
+.title-row{display:flex;align-items:center;gap:14px;justify-content:center}
+.logo-badge{width:52px;height:52px;border-radius:10px;background:linear-gradient(135deg,var(--neon-magenta),var(--neon-cyan));display:flex;align-items:center;justify-content:center;color:#041018;font-weight:900;box-shadow:0 6px 30px rgba(0,240,255,0.08), 0 2px 8px rgba(255,0,214,0.06)}
+h1{font-size:1.9rem;margin:6px 0 0 0;letter-spacing:1px;color:#eaffff;text-shadow:0 0 12px rgba(0,240,255,0.08), 0 0 28px rgba(255,0,214,0.04), 0 2px 0 rgba(0,0,0,0.6)}
+.subtitle{color:rgba(230,247,255,0.8);margin-top:8px;font-size:0.95rem}
+.download-btn{display:inline-block;margin-top:22px;padding:14px 22px;color:var(--bg-2);background:linear-gradient(90deg,var(--neon-cyan),var(--neon-magenta));border-radius:10px;text-decoration:none;font-weight:800;box-shadow:0 8px 30px rgba(0,240,255,0.12), 0 0 28px rgba(255,0,214,0.08);border:1px solid rgba(255,255,255,0.06);transform:translateY(0);transition:transform .12s ease, box-shadow .12s ease}
+.download-btn::after{content:'';display:block;height:6px;width:100%;border-radius:8px;margin-top:8px;background:linear-gradient(90deg, rgba(255,255,255,0.12), rgba(255,255,255,0));filter:blur(6px);opacity:0.6}
+.download-btn:hover{transform:translateY(-4px);box-shadow:0 18px 60px rgba(0,240,255,0.18),0 0 48px rgba(255,0,214,0.12)}
+.download-btn:active{transform:translateY(-2px)}
+.note{font-size:0.85rem;color:rgba(170,200,255,0.6);margin-top:14px}
+code{background:rgba(0,0,0,0.4);padding:4px 8px;border-radius:6px;border:1px solid rgba(255,255,255,0.03);color:var(--accent)}
+.glow-line{height:6px;border-radius:4px;margin-top:18px;background:linear-gradient(90deg, rgba(0,240,255,0.28), rgba(255,0,214,0.28));box-shadow:0 6px 40px rgba(0,240,255,0.06),0 2px 12px rgba(255,0,214,0.04)}
+.meta{margin-top:12px;font-size:0.8rem;color:rgba(170,200,255,0.5)}
+
+/* pequeñas animaciones */
+@keyframes floaty {0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+.logo-badge{animation:floaty 4s ease-in-out infinite}
+
+/* Neon blobs background */
+.neon-blobs{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(40px);opacity:0.7;mix-blend-mode:screen}
+.blob.b1{width:420px;height:420px;left:-80px;top:10%;background:radial-gradient(circle at 30% 30%, var(--neon-cyan), transparent 40%)}
+.blob.b2{width:360px;height:360px;right:-120px;top:20%;background:radial-gradient(circle at 60% 40%, var(--neon-magenta), transparent 45%)}
+.blob.b3{width:520px;height:520px;left:10%;bottom:-180px;background:radial-gradient(circle at 40% 60%, rgba(110,255,163,0.9), transparent 40%)}
+
+/* roaming mole (topo) - pequeño elemento animado que se mueve por el fondo */
+.roaming-mole{position:absolute;width:46px;height:28px;border-radius:12px;background:linear-gradient(90deg,var(--neon-magenta),var(--neon-cyan));box-shadow:0 6px 22px rgba(0,240,255,0.12),0 2px 6px rgba(255,0,214,0.08);opacity:0.95;transform:translate3d(0,0,0)}
+.roaming-mole::before{content:'';position:absolute;left:6px;top:-6px;width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.95);box-shadow:0 0 8px rgba(255,255,255,0.9)}
+.roaming-mole::after{content:'';position:absolute;right:6px;top:-6px;width:8px;height:8px;border-radius:50%;background:rgba(0,0,0,0.12)}
+
+@keyframes moleRoute {
+	0%{transform:translate( -10vw, -5vh) rotate(-6deg)}
+	25%{transform:translate( 20vw, 8vh) rotate(4deg)}
+	50%{transform:translate( 40vw, -6vh) rotate(-4deg)}
+	75%{transform:translate( 12vw, 18vh) rotate(6deg)}
+	100%{transform:translate(-10vw, -5vh) rotate(-6deg)}
+}
+.roaming-mole{animation:moleRoute 18s ease-in-out infinite}
+
+
