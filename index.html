@@ -38,7 +38,7 @@
     <div class="subtitle">Descarga el paquete instalable de CyberCrack</div>
     <p class="game-description">CyberCrack es un juego educativo para aprender ciberseguridad de manera divertida. Inspirado en la mecánica de conecta 3, deberás resolver desafíos y acertijos mientras conectas piezas, aprendiendo conceptos clave de seguridad informática en cada partida. ¡Pon a prueba tu ingenio y conviértete en un experto en ciberseguridad jugando!</p>
 
-  <a class="download-btn" href="assets/juegoGodo.apk" download="juegoGodo.apk">Descargar juegoGodo.apk</a>
+  <a class="download-btn" id="download-apk" href="assets/juegoGodo.apk" download="juegoGodo.apk">Descargar juegoGodo.apk</a>
 
   </div>
 </body>
@@ -51,6 +51,20 @@ window.addEventListener('DOMContentLoaded', function() {
       document.getElementById('cyber-loader').remove();
     }, 700);
   }, 2200);
+});
+</script>
+<script>
+// Prevenir descargas dobles por clic rápido
+document.addEventListener('DOMContentLoaded', function() {
+  var btn = document.getElementById('download-apk');
+  if(btn) {
+    btn.addEventListener('click', function(e) {
+      btn.style.pointerEvents = 'none';
+      setTimeout(function(){
+        btn.style.pointerEvents = '';
+      }, 2000); // 2 segundos de espera para evitar doble descarga
+    });
+  }
 });
 </script>
 </html>
