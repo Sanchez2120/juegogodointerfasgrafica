@@ -4,7 +4,7 @@
 const { OpenAI } = require('openai');
 
 const openai = new OpenAI({
-    apiKey: process.env.OPEN, // Usa la variable de entorno para mayor seguridad
+   apiKey: process.env.OPENAI_API_KEY, // Usa la variable de entorno para mayor seguridad
 });
 
 exports.handler = async function(event, context) {
