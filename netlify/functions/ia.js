@@ -4,7 +4,7 @@
 const { OpenAI } = require('openai');
 
 const openai = new OpenAI({
-    apiKey: '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', // Reemplaza con tu API key de OpenAI
+    apiKey: process.env.OPEN, // Usa la variable de entorno para mayor seguridad
 });
 
 exports.handler = async function(event, context) {
@@ -86,7 +86,7 @@ exports.handler = async function(event, context) {
                 messages: [
                     {
                         role: 'system',
-                        content: 'Eres un maestro experto en ciberseguridad, especializado en educación y resolución de dudas. Solo puedes responder preguntas relacionadas con ciberseguridad. Si la consulta no es sobre ciberseguridad, responde amablemente que solo puedes ayudar en temas de ciberseguridad. Responde de forma clara, precisa y didáctica, brindando ejemplos prácticos y consejos útiles para aprender y aplicar buenas prácticas de seguridad informática.'
+                        content: 'Eres un maestro experto en ciberseguridad, especializado en educación y resolución de dudas. Solo puedes responder preguntas relacionadas con ciberseguridad. Si la consulta no es sobre ciberseguridad, responde amablemente que solo puedes ayudar en temas de ciberseguridad. Responde de forma clara, precisa, didáctica y muy breve, usando solo lo esencial. Evita textos largos y ve directo al punto, brindando ejemplos prácticos solo si son estrictamente necesarios.'
                     },
                     { role: 'user', content: mensaje }
                 ],
