@@ -1,3 +1,93 @@
+.dots-loader {
+	display: inline-block;
+	width: 1.5em;
+	text-align: left;
+}
+.dots-loader::after {
+	content: '...';
+	animation: dots-appear 1.2s steps(4, end) infinite;
+	letter-spacing: 1px;
+}
+@keyframes dots-appear {
+	0% { content: ''; }
+	25% { content: '.'; }
+	50% { content: '..'; }
+	75% { content: '...'; }
+	100% { content: ''; }
+}
+/* Loader cyberpunk */
+#cyber-loader {
+	position: fixed;
+	z-index: 9999;
+	inset: 0;
+	background: linear-gradient(120deg, #0f1020 80%, #00f0ff22 100%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: opacity 0.7s cubic-bezier(.4,0,.6,1);
+}
+#cyber-loader.hide {
+	opacity: 0;
+	pointer-events: none;
+}
+.loader-bg {
+	position: relative;
+	padding: 44px 38px 32px 38px;
+	border-radius: 18px;
+	background: linear-gradient(120deg, #071428 80%, #00f0ff22 100%);
+	box-shadow: 0 0 60px 0 #00f0ff33, 0 0 0 2px #00f0ff33, 0 0 0 8px #ff00d633;
+	min-width: 340px;
+	max-width: 90vw;
+}
+.loader-glow {
+	position: absolute;
+	inset: -18px;
+	border-radius: 22px;
+	background: radial-gradient(circle, #00f0ff33 0%, transparent 80%);
+	z-index: 0;
+	filter: blur(8px);
+}
+.loader-terminal {
+	position: relative;
+	z-index: 2;
+	font-family: 'Fira Mono', 'Consolas', 'Courier New', monospace;
+	color: #b6faff;
+	text-align: left;
+}
+.loader-title {
+	font-size: 1.3rem;
+	color: #6effa3;
+	margin-bottom: 12px;
+	text-shadow: 0 0 8px #00f0ff99;
+	font-weight: bold;
+}
+.loader-code {
+	font-size: 1.05rem;
+	line-height: 1.7;
+	letter-spacing: 1.1px;
+}
+.loader-code b {
+	color: #ff00d6;
+	font-weight: 700;
+}
+.blink {
+	animation: blink-cursor 1s steps(2, start) infinite;
+}
+@keyframes blink-cursor {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0; }
+}
+/* Firma de autores profesional */
+.authors-signature {
+	margin-top: 22px;
+	font-size: 1.08rem;
+	font-family: 'Fira Mono', 'Consolas', 'Courier New', monospace;
+	color: #b6faff;
+	letter-spacing: 1.2px;
+	text-shadow: 0 0 8px rgba(0,240,255,0.18), 0 0 18px rgba(255,0,214,0.10);
+	font-weight: 600;
+	opacity: 0.92;
+}
 /* Estética cyberpunk: fondo oscuro, rejilla y neones */
 :root{
 	--bg-1:#071428; /* very dark blue */
@@ -9,7 +99,7 @@
 html,body{height:100%}
 body{
 	margin:0;padding:40px;font-family:Consolas, "Courier New", monospace;color:#e6f7ff;background:radial-gradient(1200px 600px at 10% 10%, rgba(0,240,255,0.06), transparent), radial-gradient(900px 400px at 90% 80%, rgba(255,0,214,0.04), transparent), linear-gradient(180deg,var(--bg-1),var(--bg-2));
-	overflow-x:hidden;
+	overflow:hidden;
 }
 .background-grid{position:fixed;inset:0;pointer-events:none;opacity:0.12;background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.04) 0 1px, transparent 1px 40px), repeating-linear-gradient(90deg, rgba(255,255,255,0.02) 0 1px, transparent 1px 40px);mix-blend-mode:screen}
 .scanlines{position:fixed;inset:0;pointer-events:none;background-image:repeating-linear-gradient(180deg, rgba(0,0,0,0.03) 0 2px, transparent 2px 6px);mix-blend-mode:multiply;opacity:0.25}
@@ -19,6 +109,25 @@ body{
 h1{font-size:1.9rem;margin:6px 0 0 0;letter-spacing:1px;color:#eaffff;text-shadow:0 0 12px rgba(0,240,255,0.08), 0 0 28px rgba(255,0,214,0.04), 0 2px 0 rgba(0,0,0,0.6)}
 .subtitle{color:rgba(230,247,255,0.8);margin-top:8px;font-size:0.95rem}
 .download-btn{display:inline-block;margin-top:22px;padding:14px 22px;color:var(--bg-2);background:linear-gradient(90deg,var(--neon-cyan),var(--neon-magenta));border-radius:10px;text-decoration:none;font-weight:800;box-shadow:0 8px 30px rgba(0,240,255,0.12), 0 0 28px rgba(255,0,214,0.08);border:1px solid rgba(255,255,255,0.06);transform:translateY(0);transition:transform .12s ease, box-shadow .12s ease}
+.download-btn {
+	/* ...existing styles... */
+	animation: downloadPulse 1.8s infinite alternate cubic-bezier(.4,0,.6,1);
+}
+
+@keyframes downloadPulse {
+	0% {
+		box-shadow: 0 0 0 0 rgba(0,240,255,0.18), 0 0 28px rgba(255,0,214,0.08);
+		filter: brightness(1);
+	}
+	60% {
+		box-shadow: 0 0 16px 8px rgba(0,240,255,0.22), 0 0 48px 12px rgba(255,0,214,0.13);
+		filter: brightness(1.12);
+	}
+	100% {
+		box-shadow: 0 0 32px 16px rgba(0,240,255,0.28), 0 0 64px 24px rgba(255,0,214,0.18);
+		filter: brightness(1.18);
+	}
+}
 .download-btn::after{content:'';display:block;height:6px;width:100%;border-radius:8px;margin-top:8px;background:linear-gradient(90deg, rgba(255,255,255,0.12), rgba(255,255,255,0));filter:blur(6px);opacity:0.6}
 .download-btn:hover{transform:translateY(-4px);box-shadow:0 18px 60px rgba(0,240,255,0.18),0 0 48px rgba(255,0,214,0.12)}
 .download-btn:active{transform:translateY(-2px)}

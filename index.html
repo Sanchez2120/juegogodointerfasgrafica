@@ -7,6 +7,19 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div id="cyber-loader">
+    <div class="loader-bg">
+      <div class="loader-glow"></div>
+      <div class="loader-terminal">
+  <div class="loader-title">Cargando<span class="dots-loader"></span></div>
+        <div class="loader-code">
+          <span>&gt; Autor: <b>Oscar Sanchez</b></span><br>
+          <span>&gt; Autor: <b>Sebastian Mejia</b></span><br>
+          <span>&gt; Inicializando sistema<span class="blink">_</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="background-grid"></div>
   <div class="scanlines"></div>
   <div class="neon-blobs" aria-hidden="true">
@@ -17,18 +30,27 @@
   </div>
 
   <div class="container">
-    <div class="title-row">
-  <div class="logo-badge">CC</div>
-      <div>
-  <h1>CyberCrack — Portal de Descarga</h1>
-  <div class="subtitle">Descarga el paquete instalable de CyberCrack</div>
-      </div>
-    </div>
 
-    <p class="meta">Enlace preparado para entregar tu paquete. Para producción sustituye el archivo por un .zip real.</p>
-    <div class="glow-line" aria-hidden="true"></div>
-  <a class="download-btn" href="assets/game-demo.txt" download="CyberCrack.zip">Descargar CyberCrack</a>
-  <p class="note">El archivo actual es un ejemplo de texto; reemplázalo por el paquete real (por ejemplo `CyberCrack.zip`). El atributo <code>download</code> sugiere el nombre al guardar.</p>
+    <div class="title-row" style="align-items: center;">
+      <div class="logo-badge">CC</div>
+      <h1 style="margin-left: 16px;">CyberCrack — Portal de Descarga</h1>
+    </div>
+    <div class="subtitle">Descarga el paquete instalable de CyberCrack</div>
+    <p class="game-description">CyberCrack es un juego educativo para aprender ciberseguridad de manera divertida. Inspirado en la mecánica de conecta 3, deberás resolver desafíos y acertijos mientras conectas piezas, aprendiendo conceptos clave de seguridad informática en cada partida. ¡Pon a prueba tu ingenio y conviértete en un experto en ciberseguridad jugando!</p>
+
+  <a class="download-btn" href="assets/juegoGodo.apk" download="juegoGodo.apk">Descargar juegoGodo.apk</a>
+
   </div>
 </body>
+<script>
+// Loader animación cyberpunk
+window.addEventListener('DOMContentLoaded', function() {
+  setTimeout(function() {
+    document.getElementById('cyber-loader').classList.add('hide');
+    setTimeout(function(){
+      document.getElementById('cyber-loader').remove();
+    }, 700);
+  }, 2200);
+});
+</script>
 </html>

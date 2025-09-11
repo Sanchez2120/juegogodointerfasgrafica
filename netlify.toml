@@ -1,0 +1,8 @@
+# netlify.toml
+# Configuración para que Netlify reconozca tus funciones y puedas probar localmente
+
+[build]
+  functions = "netlify/functions"
+
+[dev]
+  functions = "netlify/functions"
